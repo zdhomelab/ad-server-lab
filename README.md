@@ -112,11 +112,6 @@ The full step-by-step guide is in the Word document `Windows_Server_Domain_Imple
 ### 24. Restored user
 ![Restored user](Screenshots/24-user-restored.png)
 
-Screenshot 13 (drive mapping) and 25 (file restore) were skipped.
-
-## Sensitive data
-
-Screenshots have been edited to hide IP addresses, MAC addresses, the Proxmox login name, device and product IDs, and Windows security identifiers. Passwords were never shown. Lab usernames remain visible. Replace the domain name and any personal names before publishing outside your own lab.
 
 ## Requirements
 
