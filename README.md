@@ -113,15 +113,15 @@ All VMs use thin-provisioned disks on `local-lvm`, the VirtIO SCSI single contro
 4. **Verify:** from the Proxmox shell, run `hostname` and `ip addr`. `vmbr0` should show the static address.
 5. **Upload ISOs:** in **pve02 > local > ISO Images**, upload the Windows Server 2025 evaluation ISO and `virtio-win-0.1.285.iso`.
 
-![pve02 hostname and static IP](screenshots/02-pve02-hostname-ip.png)
+![pve02 hostname and static IP](Screenshots/02-pve02-hostname-ip.png)
 
-![ISO images in storage](screenshots/04-proxmox-iso-storage.png)
+![ISO images in storage](Screenshots/04-proxmox-iso-storage.png)
 
-![pve02 dashboard](screenshots/01b-proxmox-pve02-summary.png)
+![pve02 dashboard](Screenshots/01b-proxmox-pve02-summary.png)
 
 Two Proxmox hosts are in use: the existing pve01 (SRV-DC01) and the new pve02 (file, print and backup VMs).
 
-![Both Proxmox hosts](screenshots/01a-proxmox-pve01-hosts.png)
+![Both Proxmox hosts](Screenshots/01a-proxmox-pve01-hosts.png)
 
 ---
 
@@ -143,9 +143,9 @@ Create each VM with these settings:
 
 Add the second disk after creation: **Hardware > Add > Hard Disk** (SCSI 1, local-lvm, 50 GB for FS01 or 150 GB for BK01).
 
-![SRV-FS01 hardware](screenshots/05-srv-fs01-hardware.png)
+![SRV-FS01 hardware](Screenshots/05-srv-fs01-hardware.png)
 
-![VM list](screenshots/01b-proxmox-pve02-summary.png)
+![VM list](Screenshots/01b-proxmox-pve02-summary.png)
 
 ---
 
@@ -172,7 +172,7 @@ ipconfig /all
 
 `DHCP Enabled` must read **No**.
 
-![ipconfig /all showing the static address](screenshots/07-srv-fs01-ipconfig.png)
+![ipconfig /all showing the static address](Screenshots/07-srv-fs01-ipconfig.png)
 
 ### 6.3 Verify DNS and join the domain
 
@@ -182,13 +182,13 @@ Test-Connection 192.168.10.10   # must succeed
 Add-Computer -DomainName zeroday.local -Credential zeroday\Administrator -Restart
 ```
 
-![Domain membership](screenshots/08-srv-fs01-about.png)
+![Domain membership](Screenshots/08-srv-fs01-about.png)
 
 ### 6.4 Create the Lab-Servers OU
 
 In Active Directory Users and Computers on SRV-DC01: right-click `zeroday.local`, **New > Organizational Unit**, name it `Lab-Servers`. Move SRV-FS01, SRV-PS01 and SRV-BK01 into it.
 
-![Lab-Servers OU](screenshots/09-ad-lab-servers-ou.png)
+![Lab-Servers OU](Screenshots/09-ad-lab-servers-ou.png)
 
 ---
 
@@ -212,7 +212,7 @@ New-Partition -DiskNumber 1 -UseMaximumSize -DriveLetter D |
 Install-WindowsFeature FS-FileServer, FS-Resource-Manager -IncludeManagementTools
 ```
 
-![File Server role](screenshots/10-file-server-role.png)
+![File Server role](Screenshots/10-file-server-role.png)
 
 ### 7.3 Groups (AGDLP)
 
@@ -235,7 +235,7 @@ New-Item -Path D:\shares\HR, D:\shares\IT, D:\shares\Finance -ItemType Directory
 2. Tick **Share this folder**, click **Permissions**.
 3. Remove **Everyone**, add **DL-HR-Modify** with **Change** (Read is added with it).
 
-![HR share permissions](screenshots/11-hr-share-permissions.png)
+![HR share permissions](Screenshots/11-hr-share-permissions.png)
 
 ### 7.6 NTFS permissions (HR)
 
@@ -245,7 +245,7 @@ New-Item -Path D:\shares\HR, D:\shares\IT, D:\shares\Finance -ItemType Directory
 4. Add **SYSTEM** with **Full control**. SYSTEM is lost when inheritance is removed, and Windows services and backup tools depend on it.
 5. Confirm all entries show **Inherited from: None**.
 
-![NTFS advanced permissions](screenshots/12-hr-ntfs-advanced.png)
+![NTFS advanced permissions](Screenshots/12-hr-ntfs-advanced.png)
 
 ### 7.7 Client test
 
@@ -254,9 +254,9 @@ New-Item -Path D:\shares\HR, D:\shares\IT, D:\shares\Finance -ItemType Directory
 | Open `\\SRV-FS01\hr` | hr user01 (GG-HR) | Contents visible | Pass |
 | Open `\\SRV-FS01\Finance` | hr user01 | Access denied | Pass |
 
-![HR share opened from a client](screenshots/14-hr-share-from-client.png)
+![HR share opened from a client](Screenshots/14-hr-share-from-client.png)
 
-![Access denied on the Finance share](screenshots/23-access-denied-finance.png)
+![Access denied on the Finance share](Screenshots/23-access-denied-finance.png)
 
 Group Policy drive mapping (drive maps for each department) was deliberately not configured.
 
@@ -272,7 +272,7 @@ Install-WindowsFeature Print-Server, Print-Services -IncludeManagementTools
 
 Install the **Print Server** role service. It provides Print Management and the print spooler.
 
-![Print and Document Services](screenshots/15-print-role.png)
+![Print and Document Services](Screenshots/15-print-role.png)
 
 ### 8.2 Add the printer by IP
 
@@ -283,14 +283,14 @@ Find the printer's IP from its network configuration page, then in **Print Manag
 3. Driver: **Microsoft IPP Class Driver** first. For this model it failed with *Element not found*, so use **Have Disk** with the HP Universal Print Driver (PCL6) package from support.hp.com.
 4. Name the printer `HP Printer`.
 
-![HP Printer in Print Management](screenshots/16-hp-printer-list.png)
+![HP Printer in Print Management](Screenshots/16-hp-printer-list.png)
 
 ### 8.3 Publish to AD and set security
 
 1. **Properties > Sharing**: tick **Share this printer** and **List in the directory**.
 2. **Properties > Security**: remove **Everyone**, add **GG-HR** with **Print**. Administrators keep **Manage this printer**.
 
-![Printer security](screenshots/17-hp-printer-security.png)
+![Printer security](Screenshots/17-hp-printer-security.png)
 
 ### 8.4 Deploy with Group Policy
 
@@ -312,9 +312,9 @@ gpresult /r /scope user
 
 `Deploy HP Printer` should appear under **Applied Group Policy Objects**, and the printer should appear in **Settings > Printers & scanners** for hr user01.
 
-![Printer for hr user01](screenshots/18-printer-hr-user01.png)
+![Printer for hr user01](Screenshots/18-printer-hr-user01.png)
 
-![Printer set as default](screenshots/18b-printer-default-client.png)
+![Printer set as default](Screenshots/18b-printer-default-client.png)
 
 ---
 
@@ -324,7 +324,7 @@ gpresult /r /scope user
 
 Add a 150 GB SCSI disk to SRV-BK01 in Proxmox, then bring it online, initialize it as GPT, and format it as NTFS with drive letter E: and label `Backups`.
 
-![Backup disk E:](screenshots/19a-backup-disk.png)
+![Backup disk E:](Screenshots/19a-backup-disk.png)
 
 ### 9.2 Locked-down backup share
 
@@ -337,7 +337,7 @@ Add a 150 GB SCSI disk to SRV-BK01 in Proxmox, then bring it online, initialize 
 
 Inheritance is disabled on `E:\backups` so that the Users entry from the drive root is removed.
 
-![Backup share permissions](screenshots/19-backup-share-permissions.png)
+![Backup share permissions](Screenshots/19-backup-share-permissions.png)
 
 ### 9.3 System State backup
 
@@ -345,7 +345,7 @@ On SRV-DC01: install **Windows Server Backup**, then run **Backup Once > Custom*
 
 Result: start 10:10, end 10:41, **19.51 GB transferred**, status Successful.
 
-![System State backup result](screenshots/20-system-state-backup.png)
+![System State backup result](Screenshots/20-system-state-backup.png)
 
 ### 9.4 AD Recycle Bin
 
@@ -355,7 +355,7 @@ In Active Directory Administrative Center: **zeroday (local) > Enable Recycle Bi
 Enable-ADOptionalFeature 'Recycle Bin Feature' -Scope ForestOrConfigurationSet -Target zeroday.local -Confirm:$false
 ```
 
-![Recycle Bin enabled](screenshots/21-recycle-bin-enabled.png)
+![Recycle Bin enabled](Screenshots/21-recycle-bin-enabled.png)
 
 ### 9.5 Delete and restore test
 
@@ -365,9 +365,9 @@ Enable-ADOptionalFeature 'Recycle Bin Feature' -Scope ForestOrConfigurationSet -
 | Find it in Deleted Objects | Original OU shown as Lab-Users | Pass |
 | Restore | Returns to Lab-Users, count back to 9 | Pass |
 
-![Deleted user](screenshots/22-deleted-user.png)
+![Deleted user](Screenshots/22-deleted-user.png)
 
-![Restored user](screenshots/24-user-restored.png)
+![Restored user](Screenshots/24-user-restored.png)
 
 ---
 
