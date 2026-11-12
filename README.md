@@ -38,37 +38,81 @@ The full step-by-step guide is in the Word document `Windows_Server_Domain_Imple
 - **Printer driver:** the Microsoft IPP class driver did not install this HP model, so the HP driver package was used with Have Disk.
 - **Backup isolation:** the DC backs up to a different physical host. The backup share gives Administrators Full control, SYSTEM Full control, and the DC computer account (SRV-DC01$) Modify only.
 
-## Screenshot index
+## Screenshots
 
-| No. | Description | File |
-|---|---|---|
-| 1 | Both Proxmox hosts | `screenshots/01a-proxmox-pve01-hosts.png`, `screenshots/01b-proxmox-pve02-summary.png` |
-| 2 | pve02 hostname and static IP | `screenshots/02-pve02-hostname-ip.png` |
-| 3 | pve02 dashboard | `screenshots/01b-proxmox-pve02-summary.png` |
-| 4 | ISO images in storage | `screenshots/04-proxmox-iso-storage.png` |
-| 5 | SRV-FS01 hardware | `screenshots/05-srv-fs01-hardware.png` |
-| 6 | Proxmox VM list | `screenshots/01b-proxmox-pve02-summary.png` |
-| 7 | Static IP (ipconfig /all) | `screenshots/07-srv-fs01-ipconfig.png` |
-| 8 | Domain membership | `screenshots/08-srv-fs01-about.png` |
-| 9 | Lab-Servers OU | `screenshots/09-ad-lab-servers-ou.png` |
-| 10 | File Server role | `screenshots/10-file-server-role.png` |
-| 11 | HR share permissions | `screenshots/11-hr-share-permissions.png` |
-| 12 | HR NTFS advanced permissions | `screenshots/12-hr-ntfs-advanced.png` |
-| 13 | Group Policy drive mapping | Skipped (not required) |
-| 14 | HR share from client | `screenshots/14-hr-share-from-client.png` |
-| 15 | Print and Document Services | `screenshots/15-print-role.png` |
-| 16 | HP Printer in Print Management | `screenshots/16-hp-printer-list.png` |
-| 17 | Printer security | `screenshots/17-hp-printer-security.png` |
-| 18 | Printer for hr user01 | `screenshots/18-printer-hr-user01.png` |
-| 18b | Printer default on client | `screenshots/18b-printer-default-client.png` |
-| 19a | Backup disk E: | `screenshots/19a-backup-disk.png` |
-| 19 | Backup share permissions | `screenshots/19-backup-share-permissions.png` |
-| 20 | System State backup result | `screenshots/20-system-state-backup.png` |
-| 21 | AD Recycle Bin | `screenshots/21-recycle-bin-enabled.png` |
-| 22 | Deleted user | `screenshots/22-deleted-user.png` |
-| 23 | Access denied on Finance | `screenshots/23-access-denied-finance.png` |
-| 24 | Restored user | `screenshots/24-user-restored.png` |
-| 25 | File restore | Skipped |
+### 1. Proxmox hosts
+![Proxmox hosts](screenshots/01a-proxmox-pve01-hosts.png)
+
+### 2. pve02 hostname and static IP
+![pve02 hostname and IP](screenshots/02-pve02-hostname-ip.png)
+
+### 3 and 6. pve02 dashboard and VM list
+![pve02 dashboard](screenshots/01b-proxmox-pve02-summary.png)
+
+### 4. ISO images in storage
+![ISO storage](screenshots/04-proxmox-iso-storage.png)
+
+### 5. SRV-FS01 hardware
+![SRV-FS01 hardware](screenshots/05-srv-fs01-hardware.png)
+
+### 7. Static IP (ipconfig /all)
+![ipconfig](screenshots/07-srv-fs01-ipconfig.png)
+
+### 8. Domain membership
+![Domain membership](screenshots/08-srv-fs01-about.png)
+
+### 9. Lab-Servers OU
+![Lab-Servers OU](screenshots/09-ad-lab-servers-ou.png)
+
+### 10. File Server role
+![File Server role](screenshots/10-file-server-role.png)
+
+### 11. HR share permissions
+![HR share permissions](screenshots/11-hr-share-permissions.png)
+
+### 12. HR NTFS advanced permissions
+![HR NTFS permissions](screenshots/12-hr-ntfs-advanced.png)
+
+### 14. HR share from a client
+![HR share from client](screenshots/14-hr-share-from-client.png)
+
+### 15. Print and Document Services
+![Print role](screenshots/15-print-role.png)
+
+### 16. HP Printer in Print Management
+![HP Printer list](screenshots/16-hp-printer-list.png)
+
+### 17. Printer security
+![Printer security](screenshots/17-hp-printer-security.png)
+
+### 18. Printer for hr user01
+![Printer for hr user01](screenshots/18-printer-hr-user01.png)
+
+### 18b. Printer default on client
+![Printer default](screenshots/18b-printer-default-client.png)
+
+### 19a. Backup disk E:
+![Backup disk](screenshots/19a-backup-disk.png)
+
+### 19. Backup share permissions
+![Backup share permissions](screenshots/19-backup-share-permissions.png)
+
+### 20. System State backup result
+![System State backup](screenshots/20-system-state-backup.png)
+
+### 21. AD Recycle Bin
+![Recycle Bin](screenshots/21-recycle-bin-enabled.png)
+
+### 22. Deleted user
+![Deleted user](screenshots/22-deleted-user.png)
+
+### 23. Access denied on Finance
+![Access denied](screenshots/23-access-denied-finance.png)
+
+### 24. Restored user
+![Restored user](screenshots/24-user-restored.png)
+
+Screenshot 13 (drive mapping) and 25 (file restore) were skipped.
 
 ## Sensitive data
 
