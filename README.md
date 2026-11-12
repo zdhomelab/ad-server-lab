@@ -41,7 +41,7 @@ The full step-by-step guide is in the Word document `Windows_Server_Domain_Imple
 ## Screenshots
 
 ### 1. Proxmox hosts
-![Proxmox hosts](screenshots/01a-proxmox-pve01-hosts.png)
+![Proxmox hosts](Screenshots/01a-proxmox-pve01-hosts.png)
 
 ### 2. pve02 hostname and static IP
 ![pve02 hostname and IP](screenshots/02-pve02-hostname-ip.png)
