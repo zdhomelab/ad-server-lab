@@ -1,6 +1,6 @@
 # Active Directory Server Lab: File, Print and Backup Services
 
-![ifog](screenshots/zdb.png)
+![labban](Screenshots/zdb.png)
 
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen)
@@ -9,6 +9,8 @@
 ![Domain](https://img.shields.io/badge/domain-zeroday.local-555555)
 
 A two-host virtualization lab that extends an existing Active Directory domain with three member servers: a **file server** with department shares secured by AD groups, a **print server** that publishes and deploys a printer through Group Policy, and a **backup server** that stores a verified System State backup of the domain controller. The lab also covers the AD Recycle Bin and a delete-and-restore test.
+
+![ifog](Screenshots/infg.png)
 
 ---
 
