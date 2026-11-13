@@ -1,5 +1,8 @@
 # Active Directory Server Lab: File, Print and Backup Services
 
+![ifog](screenshots/zdb.png)
+
+
 ![Status](https://img.shields.io/badge/status-complete-brightgreen)
 ![Windows Server](https://img.shields.io/badge/Windows%20Server-2025-0078D4)
 ![Proxmox](https://img.shields.io/badge/Proxmox%20VE-9.2-E57000)
