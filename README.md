@@ -485,6 +485,11 @@ Screenshots were edited to hide IP addresses, MAC addresses, the Proxmox login n
 - virtio-win 0.1.x drivers
 - A printer with an IP address that supports IPP or PCL, plus its driver package
 
-## Licence
+## Related Projects
 
-Lab documentation for personal and educational use.
+- [Pi-hole DNS Filtering & Visibility Lab](https://github.com/zdhomelab/Pi-Hole-DNS-Lab.git): the DNS filtering layer that feeds this SIEM.
+- [Active Directory & Windows Security Lab](https://github.com/zdhomelab/AD-WS-Lab.git): the domain environment both projects build on.
+
+## Disclaimer
+
+This is a personal homelab built for learning. IP addresses and MAC addresses in screenshots are blurred. Test accounts were used for all failed-logon and lockout activity, and no production systems were involved.
