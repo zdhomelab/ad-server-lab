@@ -42,7 +42,7 @@ A two-host virtualization lab that extends an existing Active Directory domain w
  +--------------------------+               +-------------------------------------------+
  | SRV-DC01                 |               | SRV-FS01  (VM 101)  Windows Server 2025   |
  | AD DS, DNS, zeroday.local|<------------->|   D: 50 GB data, File Server, FSRM        |
- | Lab-Users, Lab-Groups,   |  192.168.10.0/24 SRV-PS01  (VM 102)  Print and Document   |
+ | Lab-Users, Lab-Groups,   |  192.168.100.0/24 SRV-PS01  (VM 102)  Print and Document   |
  | Lab-Computers, Lab-Servers|  (vmbr0)     |   HP Printer (IPP / PCL), GPO deployment  |
  | Windows Server Backup    |               | SRV-BK01  (VM 103)  Backup server         |
  |  (System State)  ----------------------->|   E: 150 GB backups, locked share         |
@@ -89,12 +89,12 @@ All VMs use thin-provisioned disks on `local-lvm`, the VirtIO SCSI single contro
 
 | Host | Name | IPv4 | Role |
 |---|---|---|---|
-| pve02 | pve02.zeroday.local | 192.168.10.4/24 | Proxmox node |
-| SRV-DC01 | SRV-DC01.zeroday.local | 192.168.10.10/24 | DNS, AD DS |
-| SRV-FS01 | SRV-FS01.zeroday.local | 192.168.10.91/24 | File server |
-| SRV-PS01 | SRV-PS01.zeroday.local | static, 192.168.10.x | Print server |
-| SRV-BK01 | SRV-BK01.zeroday.local | static, 192.168.10.x | Backup server |
-| Gateway | - | 192.168.10.1 | Default gateway |
+| pve02 | pve02.zeroday.local | 192.168.100.4/24 | Proxmox node |
+| SRV-DC01 | SRV-DC01.zeroday.local | 192.168.100.10/24 | DNS, AD DS |
+| SRV-FS01 | SRV-FS01.zeroday.local | 192.168.100.91/24 | File server |
+| SRV-PS01 | SRV-PS01.zeroday.local | static, 192.168.100.x | Print server |
+| SRV-BK01 | SRV-BK01.zeroday.local | static, 192.168.100.x | Backup server |
+| Gateway | - | 192.168.100.X | Default gateway |
 
 **OUs and groups**
 
@@ -183,7 +183,7 @@ ipconfig /all
 
 ```powershell
 nslookup zeroday.local          # must return the DC address
-Test-Connection 192.168.10.10   # must succeed
+Test-Connection 192.168.100.10   # must succeed
 Add-Computer -DomainName zeroday.local -Credential zeroday\Administrator -Restart
 ```
 
